@@ -1,0 +1,141 @@
+Golang
+14 Oct 2015
+
+Zbigniew Mandziejewicz
+Morgan Stanley
+zbigniem@ms.com
+
+* Who's behind it
+Rob Pike - Plan 9
+Ken Thompson - B / Plan 9 / UTF-8
+Robert Griesemer - Strongtalk / HotSpot / V8
+
+.image images/three.png
+
+* From C to Go
+
+What's missing:
+
+- pointer arithmetics
+- implicit type conversion
+- manual heap allocation
+- preprocessor definitions
+
+What's new:
+
+- packages
+- concurrency
+- range iteration
+- standard container types
+- mathematically precise constants
+
+* Pointers in Go
+
+.image images/pointers.jpg
+
+* Pointers in Go
+
+Pointers in Go refer to heap values managed by garbage collector.
+No pointer arithmetics
+Compile-time conversion from stack value to pointer.
+
+Example:
+
+.play pointer.go /func main/,/ENDMAIN/
+
+* Type conversions
+
+Literals assume type based on expression.
+Expressions do not allow implicit type conversions.
+Interface pointers are dynamically typed.
+
+.play typeconv.go /func main/,/ENDMAIN/
+
+* Standard container types
+
+Array stores values contigously and has a fixed size.
+String is an utf8 encoded array of bytes.
+Slice is view of array.
+
+.play container1.go /func main/,/ENDMAIN/
+
+* Standard container types - contd.
+
+Map is hash table backed associative container.
+
+.play container2.go /func main/,/ENDMAIN/
+
+* Channels
+
+.image images/concurrency.jpg
+
+* Channels
+
+_Don't_communicate_by_sharing_memory;_share_memory_by_communicating_
+
+.image images/gophercomplex3.jpg
+
+Channels together with coroutines can model generators.
+Selecting on channels allows to model actors.
+Timeouts and shutdown are easy.
+
+* Channels - simple example
+
+.play channel1.go /func main/,/ENDMAIN/
+
+* Channels - simple example fixed
+
+.play channel1f.go /func main/,/ENDMAIN/
+
+* Channels - actor
+
+.play channel2.go /func actor/,/ENDACTOR/
+
+* Channels - main loop
+
+.play channel2.go /func main/,/ENDMAIN/
+
+* Duck typing
+
+Go interfaces are matched statically
+Implementation inheritance violates encapsulation
+Using data composition to add new behaviour
+Side effect - API stability
+
+* Duck typing
+
+.play interface.go
+
+* Generics
+
+.image images/generics.jpg
+
+* Generics
+
+_"I've_been_coding_in_Go_for_2_years_and_didn't_even_miss_them"_
+_"Can_we_stop_the_trolls_and_get_back_to_writing_real-world_software"_
+_"Go_is_mature_language_and_doesn't_need_generics"_
+
+Ability != Feasibility.
+Built-in generics for channels, maps, slices.
+Language designers are looking for solution.
+Loads of third party container implementations.
+
+* Loops
+
+C style for loop, no while loop.
+
+.play loop.go /func main/,/ENDMAIN/
+
+* Range
+
+Combines python style for loop with enumerate.
+
+.play range1.go /func main/,/ENDMAIN/
+
+* Range iteration - contd.
+
+Iterating over string yields runes.
+If the value is not binded it is ignored - no tuple dilema.
+
+.play range2.go /func main/,/ENDMAIN/
