@@ -6,9 +6,10 @@ Morgan Stanley
 zbigniem@ms.com
 
 * Who's behind it
+
+Robert Griesemer - Strongtalk / HotSpot / V8
 Rob Pike - Plan 9
 Ken Thompson - B / Plan 9 / UTF-8
-Robert Griesemer - Strongtalk / HotSpot / V8
 
 .image images/three.png
 
@@ -50,6 +51,12 @@ Expressions do not allow implicit type conversions.
 Interface pointers are dynamically typed.
 
 .play typeconv.go /func main/,/ENDMAIN/
+
+* Loops
+
+C style for loop, no while loop.
+
+.play loop.go /func main/,/ENDMAIN/
 
 * Standard container types
 
@@ -121,21 +128,3 @@ Built-in generics for channels, maps, slices.
 Language designers are looking for solution.
 Loads of third party container implementations.
 
-* Loops
-
-C style for loop, no while loop.
-
-.play loop.go /func main/,/ENDMAIN/
-
-* Range
-
-Combines python style for loop with enumerate.
-
-.play range1.go /func main/,/ENDMAIN/
-
-* Range iteration - contd.
-
-Iterating over string yields runes.
-If the value is not binded it is ignored - no tuple dilema.
-
-.play range2.go /func main/,/ENDMAIN/
